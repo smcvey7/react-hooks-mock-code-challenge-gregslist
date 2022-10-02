@@ -1,11 +1,21 @@
-import React from "react";
-// import ListingCard from "./ListingCard";
+import React, {useState} from "react";
+import ListingCard from "./ListingCard";
 
-function ListingsContainer() {
+// "id": 1,
+// "description": "heater",
+// "image": "./images/heater.jpg",
+// "location": "BROOKLYN"
+
+function ListingsContainer({ narrowedSearch, onHandleDelete }) {
+
+  const listingComponents = narrowedSearch.map((item)=>{
+    return <ListingCard handleDelete={onHandleDelete} id={item.id} key={item.id} description={item.description} image={item.image} location = {item.location} />
+  })
+
   return (
     <main>
       <ul className="cards">
-        {/* use the ListingCard component to display listings */}
+        {listingComponents}
       </ul>
     </main>
   );
